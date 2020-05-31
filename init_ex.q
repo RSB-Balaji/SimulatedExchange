@@ -1,7 +1,7 @@
 .dt.trade:([]
 	boid:`int$();
 	soid:`int$();
-	time:`time$();
+	time:`timespan$();
 	sym:`symbol$();
 	price:`int$();
 	qty:`int$())
@@ -15,7 +15,7 @@
 .ex.lq:([] 
 	pid:`int$();
 	oid:`int$();
-	time:`time$();
+	time:`timespan$();
 	sym:`symbol$();
 	side:`char$();
 	qty:`int$();
@@ -28,7 +28,7 @@
 .ex.mq:([]
 	pid:`int$();
 	oid:`int$(); 
-	time:`time$(); 
+	time:`timespan$(); 
 	sym:`symbol$(); 
 	side:`char$(); 
 	qty:`int$();

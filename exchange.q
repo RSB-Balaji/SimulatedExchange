@@ -49,11 +49,18 @@ id:0;
 	(neg .ex.eng_h) (".eng.bpx");
 	if[order[1]="B";
 	if[order[3]=`limit;
-	if[order[2]*order[4] <= .ex.get_bal[pid][0]; r:1b;];];
-	if[order[3]=`market];
-	if[order[2]*.ex.bpx[1] <= .ex.get_bal[pid][0]; r:1b;];];
+	if[(order[4]>0)and(order[2]>0);
+	if[order[2]*order[4] <= .ex.get_bal[pid][0]; r:1b;];];];
+	if[order[3]=`market;
+	if[order[2]>0;
+	if[order[2]*.ex.bpx[1] <= .ex.get_bal[pid][0]; r:1b;];];];];
 	if[order[1]="S";
-	if[order[2] <= .ex.get_qty[pid][0]; r:1b];];
+	if[order[3]=`limit;
+	if[(order[4]>0)and(order[2]>0);
+	if[order[2] <= .ex.get_qty[pid][0]; r:1b];];];
+	if[order[3]=`market;
+	if[order[2]>0;
+	if[order[2] <= .ex.get_qty[pid][0]; r:1b];];];];
 	r}
 
 .ex.cancel:{[order]
@@ -70,7 +77,7 @@ id:0;
 	if[order[1]~`cancel;
 	(neg .ex.eng_h) (".eng.deq"; order; ".ex.cancel");];
 	if[(order[3]~`market) or (order[3]~`limit);
-	o:(id+:1; .z.T), order;
+	o:(id+:1; .z.N), order;
 	flag:.ex.is_valid_order[order; .z.w];
 	if[flag;
 	if[order[3]~`market; .ex.mq,:(.z.w),(o,0,0,`open);];

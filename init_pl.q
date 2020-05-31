@@ -1,6 +1,6 @@
 .pl.orders:([]
 	oid:`int$();
-	time:`time$();
+	time:`timespan$();
 	sym:`symbol$();
 	side:`char$();
 	qty:`int$();
@@ -16,8 +16,7 @@
 
 .pl.upd_info:{[bal; ns]
 	.pl.info[`balance]:bal;
-	.pl.info[`noShares]:ns;
-	show .pl.info;}
+	.pl.info[`noShares]:ns;}
 
 .pl.upd_trade:{[trade]
 	info:exec filledQty from .pl.orders where oid=trade[0];
