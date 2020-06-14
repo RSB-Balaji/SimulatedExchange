@@ -14,7 +14,7 @@ The simulation of the orders is modelled based on three things:
 3. Price of orders
 
 ### Arrival times
-The arrival times of the orders are modelled as a Homogenos Poisson Process. With constant rate for each type of order i.e., market buy, market sell, limit buy, limit sell.
+The arrival times of the orders are modelled as a **Homogenos Poisson Process**. With constant rate for each type of order i.e., market buy, market sell, limit buy, limit sell.
 
 Here is the q code that simulates the arrival of orders as a Homogenous Poisson Process.
 ```
